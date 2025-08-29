@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Polls</title>
+	<link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Polls</h1>
+			<a href="/poll/new"><button>Create poll</button></a>
+		</header>
+		<div>
+			<% if (polls.length === 0) { %>
+				<div class="card">No polls yet.</div>
+			<% } %>
+			<% polls.forEach(p => { %>
+				<div class="card">
+					<div><strong><a href="/poll/<%= p.id %>"><%= p.question %></a></strong></div>
+					<div class="muted">Created <%= new Date(p.created_at).toLocaleString() %></div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+</body>
+</html>

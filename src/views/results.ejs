@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Results</title>
+	<link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<a href="/poll/<%= poll.id %>">← Back to vote</a>
+			<h1>Results</h1>
+			<a href="/">All polls</a>
+		</header>
+		<div class="card">
+			<div><strong><%= poll.question %></strong></div>
+			<div class="muted"><%= total %> total vote(s)</div>
+			<div style="margin-top: 12px">
+				<% rows.forEach(r => { const pct = total ? Math.round((r.votes / total) * 100) : 0; %>
+					<div style="margin: 6px 0">
+						<div class="row" style="justify-content: space-between"><span><%= r.label %></span><span class="muted"><%= r.votes %> votes</span></div>
+						<progress max="100" value="<%= pct %>"></progress>
+					</div>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
