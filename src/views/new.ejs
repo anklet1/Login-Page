@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Create poll</title>
+	<link rel="stylesheet" href="/static/css/styles.css" />
+	<script>
+	function addOptionRow() {
+		const container = document.getElementById('options');
+		const input = document.createElement('input');
+		input.type = 'text';
+		input.name = 'options';
+		input.placeholder = 'Option';
+		container.appendChild(input);
+	}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<a href="/">← Back</a>
+			<h1>New poll</h1>
+			<div></div>
+		</header>
+		<form class="card" method="post" action="/poll">
+			<label>Question</label>
+			<input name="question" required />
+			<label>Options</label>
+			<div id="options" class="options">
+				<input type="text" name="options" placeholder="Option" required />
+				<input type="text" name="options" placeholder="Option" required />
+			</div>
+			<div class="row">
+				<button type="button" onclick="addOptionRow()">Add option</button>
+				<div class="muted">Minimum 2 options</div>
+			</div>
+			<div class="row" style="justify-content: flex-end">
+				<button type="submit">Create</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
